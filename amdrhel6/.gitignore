@@ -1,0 +1,17 @@
+# ignore RHEL components
+EFI/*
+images/*
+isolinux/*
+Packages/*
+release-notes/*
+repodata/*
+Server/*
+EULA*
+GPL
+RPM-GPG-KEY-*
+media.repo
+TRANS.TBL
+.discinfo
+.treeinfo
+README
+
