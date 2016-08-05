@@ -11,6 +11,7 @@
 - AMD 12.4.2 (build 24)
 - Extra dependencies added since 12.4 GA.
 - New Logos
+- Supports 12.4.0-7 classic or high speed AMD.
 
 
 
