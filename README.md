@@ -11,7 +11,7 @@
 - AMD 12.4.2 (build 24)
 - Extra dependencies added since 12.4 GA.
 - New Logos
-- Supports 12.4.0-7 classic or high speed AMD.
+- Supports 12.4.0-10 classic or high speed AMD.
 
 
 
@@ -149,6 +149,7 @@ RHEL6.6 AMD12.3 Mini1-5
 
  
 ### Successful Platforms
+- Cisco UCS C240 M3S
 - Dell 2950
 - Dell R720
 - Dell R730
@@ -163,10 +164,11 @@ RHEL6.6 AMD12.3 Mini1-5
 **VMWare**
 
 Note, to install create your VM with the following options:
--	Guest Operating System, choose Red Hat Enterprise Linux 6 64-bit or 7 64-bit if available (VMWare Workstation 9 doesn’t have 7 as an option 6 works fine.).
+-	Guest Operating System, choose Red Hat Enterprise Linux 6 64-bit or 7 64-bit if available (VMWare Workstation 9 doesn’t have 7 as an option, 6 works fine.).
 -	Disk Space: at least 20GB, thin provisioned is fine, but the installer needs to see sufficient space to install.
--	E1000 virtual NICs
-	Then when running rtminst to configure monitoring ports, be sure to change the driver type to Native, Customised won’t work with the virtual NICs.	
+-	E1000 virtual NICs (at least two, one for communicaitons, one for capture)
+
+Then when running rtminst to configure monitoring ports, be sure to change the driver type to Native, Customised won’t work with the virtual NICs.	
 
 
 
