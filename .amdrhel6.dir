@@ -18,12 +18,12 @@
 amdrhel6/Server:
 total 8192
 4096 drwx------. 2 data_mine data_mine 4096 Nov 24  2015 repodata
-4096 -rw-rw-r--. 1 data_mine data_mine   71 Aug  5 13:28 .gitignore
+4096 -rw-rw-r--. 1 data_mine data_mine   71 Aug  5  2016 .gitignore
 
 amdrhel6/repodata:
 total 3952640
    4096 -rw-rw-r--. 1 data_mine data_mine    4000 Nov 24  2015 repomd.xml
-   4096 -rw-rw-r--. 1 data_mine data_mine      71 Aug  5 13:28 .gitignore
+   4096 -rw-rw-r--. 1 data_mine data_mine      71 Aug  5  2016 .gitignore
 1163264 -rw-rw-r--. 1 data_mine data_mine 1160392 Nov 24  2015 f02bd293e27f03da8e2ada3b08eac625c564b365fae6d2a673c0478a368df010-comps.xml
  217088 -rw-rw-r--. 1 data_mine data_mine  213072 Nov 24  2015 efb9ce2fdf36dc854b91bddb648681d014f551ad0fbb40032158d63f3e0335b3-comps.xml.gz
  393216 -rw-rw-r--. 1 data_mine data_mine  389644 Nov 24  2015 d3b8727cb49d6ee04e3450740a9364faef9d843673a1515bfaaf124e98aa8bbb-filelists.xml.gz
@@ -58,7 +58,7 @@ total 4096
    0 drwx------. 4 data_mine data_mine 73 Nov 24  2015 Red_Hat_Enterprise_Linux-Release_Notes-6-de-DE-6
    0 drwx------. 4 data_mine data_mine 73 Nov 24  2015 Red_Hat_Enterprise_Linux-Release_Notes-6-bn-IN-6
    0 drwx------. 4 data_mine data_mine 73 Nov 24  2015 Red_Hat_Enterprise_Linux-Release_Notes-6-as-IN-6
-4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5 13:28 .gitignore
+4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5  2016 .gitignore
 
 amdrhel6/Packages:
 total 360615936
@@ -472,7 +472,7 @@ total 360615936
  3993600 -rw-rw-r--. 1 data_mine data_mine  3991612 Nov 24  2015 glibc-2.12-1.149.el6.x86_64.rpm
  4554752 -rw-rw-r--. 1 data_mine data_mine  4553092 Nov 24  2015 glibc-2.12-1.149.el6.i686.rpm
  1753088 -rw-rw-r--. 1 data_mine data_mine  1753048 Nov 24  2015 glib2-2.28.8-4.el6.x86_64.rpm
-    4096 -rw-rw-r--. 1 data_mine data_mine       71 Aug  5 13:27 .gitignore
+    4096 -rw-rw-r--. 1 data_mine data_mine       71 Aug  5  2016 .gitignore
    40960 -rw-rw-r--. 1 data_mine data_mine    37532 Nov 24  2015 giflib-4.1.6-3.1.el6.x86_64.rpm
  1933312 -rw-rw-r--. 1 data_mine data_mine  1930116 Nov 24  2015 gettext-0.17-18.el6.x86_64.rpm
   516096 -rw-rw-r--. 1 data_mine data_mine   512868 Nov 24  2015 gdk-pixbuf2-2.24.1-5.el6.x86_64.rpm
@@ -629,13 +629,13 @@ total 200486912
         0 drwx------. 2 data_mine data_mine        53 Nov 24  2015 pxeboot
   5898240 -rw-rw-r--. 1 data_mine data_mine   5898240 Nov 24  2015 product.img
 154755072 -rw-rw-r--. 1 data_mine data_mine 154755072 Nov 24  2015 install.img
-     4096 -rw-rw-r--. 1 data_mine data_mine        71 Aug  5 13:27 .gitignore
+     4096 -rw-rw-r--. 1 data_mine data_mine        71 Aug  5  2016 .gitignore
  39440384 -rw-rw-r--. 1 data_mine data_mine  39438336 Nov 24  2015 efidisk.img
    380928 -rw-rw-r--. 1 data_mine data_mine    380928 Nov 24  2015 efiboot.img
 
 amdrhel6/EFI:
 total 4096
-4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5 13:27 .gitignore
+4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5  2016 .gitignore
    0 drwx------. 2 data_mine data_mine 79 Nov 24  2015 BOOT
 
 amdrhel6/amd:

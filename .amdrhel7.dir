@@ -1,5 +1,5 @@
  4096 -rwxrwxr-x. 1 data_mine data_mine   364 Jan 13  2016 amdrhel7/updaterepo.sh
- 8192 -rwxrwxr-x. 1 data_mine data_mine  7160 Apr 26 12:08 amdrhel7/updatepackages.sh
+ 8192 -rwxrwxr-x. 1 data_mine data_mine  7160 Apr 26  2016 amdrhel7/updatepackages.sh
  4096 -rw-rw-r--. 1 data_mine data_mine  1568 Oct 31  2015 amdrhel7/TRANS.TBL
  4096 -rwxrwxr-x. 1 data_mine data_mine   430 Jan 13  2016 amdrhel7/testrepo.sh
  4096 -rw-rw-r--. 1 data_mine data_mine  3211 Oct 24  2015 amdrhel7/RPM-GPG-KEY-redhat-release
@@ -11,27 +11,27 @@
 amdrhel7/repodata:
 total 4308992
   4096 -rw-rw-r--. 1 data_mine data_mine   3093 Jan 12  2016 TRANS.TBL
-  4096 -rw-rw-r--. 1 data_mine data_mine   3703 Apr 28 14:03 repomd.xml
+  4096 -rw-rw-r--. 1 data_mine data_mine   3703 Apr 28  2016 repomd.xml
   4096 -rw-rw-r--. 1 data_mine data_mine   2159 Jan 12  2016 productid
-  4096 -rw-rw-r--. 1 data_mine data_mine     71 Aug  5 13:29 .gitignore
+  4096 -rw-rw-r--. 1 data_mine data_mine     71 Aug  5  2016 .gitignore
   4096 -r--r--r--. 1 root      root        1619 Jan 12  2016 e67a1b710afb8343fb2c1fef5c670e25b46e6aa25b736c2db657bce6cd356a4d-productid.gz
 139264 -rw-rw-r--. 1 data_mine data_mine 137329 Oct 20  2015 ba12d19595a807ce68a015eb2ec5cc40ba70d22de738a2e84d9286344a2c6f2d-comps-Server.x86_64.xml.gz
-139264 -rw-rw-r--. 1 data_mine data_mine 135989 Apr 28 14:03 b780b6aeb3d403ddaf206dcb63f3289061f837c981388c2bed36f12316f3305a-comps.xml.gz
-495616 -rw-rw-r--. 1 data_mine data_mine 493925 Apr 28 14:03 ad58d972bd8dbd1106d0a2b61e9d8a80fcf9ffd46f520550c7e87c7c03d28601-filelists.sqlite.bz2
-274432 -rw-rw-r--. 1 data_mine data_mine 271185 Apr 28 14:03 aa96ce2cab09b2b9cb05dc533dcbfcba2d2cc01bd7f326c143bf0abc8a713c67-other.xml.gz
+139264 -rw-rw-r--. 1 data_mine data_mine 135989 Apr 28  2016 b780b6aeb3d403ddaf206dcb63f3289061f837c981388c2bed36f12316f3305a-comps.xml.gz
+495616 -rw-rw-r--. 1 data_mine data_mine 493925 Apr 28  2016 ad58d972bd8dbd1106d0a2b61e9d8a80fcf9ffd46f520550c7e87c7c03d28601-filelists.sqlite.bz2
+274432 -rw-rw-r--. 1 data_mine data_mine 271185 Apr 28  2016 aa96ce2cab09b2b9cb05dc533dcbfcba2d2cc01bd7f326c143bf0abc8a713c67-other.xml.gz
 643072 -r--r--r--. 1 root      root      641345 Jan 12  2016 81c149ffb2267c59a3e6405766b5ff3dc78e0637033e9f5aef564538359ff281-comps-Server.x86_64.xml
-360448 -rw-rw-r--. 1 data_mine data_mine 357705 Apr 28 14:03 6bdf040bc7c1e118ae768df7841fd39b03f53b9525ab627f978648f03a48b2e3-filelists.xml.gz
-638976 -rw-rw-r--. 1 data_mine data_mine 635565 Apr 28 14:03 527a8b3063d516bd9d4cf33ebf5f8c5a0e83fecb48babbb9e84c7c573004b3f4-comps.xml
+360448 -rw-rw-r--. 1 data_mine data_mine 357705 Apr 28  2016 6bdf040bc7c1e118ae768df7841fd39b03f53b9525ab627f978648f03a48b2e3-filelists.xml.gz
+638976 -rw-rw-r--. 1 data_mine data_mine 635565 Apr 28  2016 527a8b3063d516bd9d4cf33ebf5f8c5a0e83fecb48babbb9e84c7c573004b3f4-comps.xml
   4096 -rw-rw-r--. 1 data_mine data_mine   1616 Oct 20  2015 4c4bc87d3301fd34ca1d49b4787c6f8ee4528e298f031bca447f803b1e374f28-productid.gz
-782336 -rw-rw-r--. 1 data_mine data_mine 779371 Apr 28 14:03 41ff6029c946da54359a3fc12eb555251c877566f872ca8d6e630d75ae949032-primary.sqlite.bz2
-393216 -rw-rw-r--. 1 data_mine data_mine 392067 Apr 28 14:03 40ee2411c40853da4e036d774fcad38e815732647c82cd833c709a8fe2c85487-primary.xml.gz
-278528 -rw-rw-r--. 1 data_mine data_mine 277805 Apr 28 14:03 3d238ce60ee0c5a639765dcc395e182ec6cc8c0a6c8002fcf896f60d011db514-other.sqlite.bz2
+782336 -rw-rw-r--. 1 data_mine data_mine 779371 Apr 28  2016 41ff6029c946da54359a3fc12eb555251c877566f872ca8d6e630d75ae949032-primary.sqlite.bz2
+393216 -rw-rw-r--. 1 data_mine data_mine 392067 Apr 28  2016 40ee2411c40853da4e036d774fcad38e815732647c82cd833c709a8fe2c85487-primary.xml.gz
+278528 -rw-rw-r--. 1 data_mine data_mine 277805 Apr 28  2016 3d238ce60ee0c5a639765dcc395e182ec6cc8c0a6c8002fcf896f60d011db514-other.sqlite.bz2
 139264 -r--r--r--. 1 root      root      138768 Jan 12  2016 08e566b3f6f6ad461fe70e67c12f7e41042079e9b77cbdd32b5f4a5a020876b1-comps-Server.x86_64.xml.gz
 
 amdrhel7/release-notes:
 total 4096
    0 drwxrwxr-x. 4 data_mine data_mine 73 Oct 31  2015 Red_Hat_Enterprise_Linux-Release_Notes-7-en-US-7
-4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5 13:29 .gitignore
+4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5  2016 .gitignore
 
 amdrhel7/Packages:
 total 557850624
@@ -469,7 +469,7 @@ total 557850624
  12025856 -rw-rw-r--. 1 data_mine data_mine  12022964 Jan 13  2016 glibc-common-2.17-105.el7.x86_64.rpm
   3756032 -rw-rw-r--. 1 data_mine data_mine   3754828 Jan 13  2016 glibc-2.17-105.el7.x86_64.rpm
   2342912 -rw-rw-r--. 1 data_mine data_mine   2340792 Jan 13  2016 glib2-2.42.2-5.el7.x86_64.rpm
-     4096 -rw-rw-r--. 1 data_mine data_mine        71 Aug  5 13:29 .gitignore
+     4096 -rw-rw-r--. 1 data_mine data_mine        71 Aug  5  2016 .gitignore
     45056 -rw-rw-r--. 1 data_mine data_mine     41024 Jan 13  2016 giflib-4.1.6-9.el7.x86_64.rpm
    446464 -rw-rw-r--. 1 data_mine data_mine    445056 Jan 13  2016 gettext-libs-0.18.2.1-4.el7.x86_64.rpm
    983040 -rw-rw-r--. 1 data_mine data_mine    982376 Jan 13  2016 gettext-0.18.2.1-4.el7.x86_64.rpm
@@ -597,8 +597,8 @@ total 557850624
    229376 -r--r--r--. 1 data_mine data_mine    228448 Apr  1  2014 apache-commons-codec-1.8-7.el7.noarch.rpm
    368640 -r--r--r--. 1 data_mine data_mine    365776 Apr  1  2014 antlr-tool-2.7.7-30.el7.noarch.rpm
   2031616 -r--r--r--. 1 data_mine data_mine   2030692 Apr  1  2014 ant-1.9.2-9.el7.noarch.rpm
- 46931968 -rw-rw-r--. 1 data_mine data_mine  46928352 Apr 28 14:01 amdpackage1245-12.4.5.1686-1.el7.centos.x86_64.rpm
-100728832 -rw-rw-r--. 1 data_mine data_mine 100725388 Apr 28 14:02 amdpackage1242-12.4.2.0024-3.el7.centos.x86_64.rpm
+ 46931968 -rw-rw-r--. 1 data_mine data_mine  46928352 Apr 28  2016 amdpackage1245-12.4.5.1686-1.el7.centos.x86_64.rpm
+100728832 -rw-rw-r--. 1 data_mine data_mine 100725388 Apr 28  2016 amdpackage1242-12.4.2.0024-3.el7.centos.x86_64.rpm
    401408 -rw-rw-r--. 1 data_mine data_mine    400300 Jan 13  2016 alsa-lib-1.0.28-2.el7.x86_64.rpm
     69632 -rw-rw-r--. 1 data_mine data_mine     69428 Jan 13  2016 acpid-2.0.19-6.el7.x86_64.rpm
     86016 -rw-rw-r--. 1 data_mine data_mine     82920 Jan 13  2016 acl-2.2.51-12.el7.x86_64.rpm
@@ -607,7 +607,7 @@ amdrhel7/LiveOS:
 total 274079744
      4096 -rw-rw-r--. 1 data_mine data_mine       224 Jan 12  2016 TRANS.TBL
 274071552 -rw-rw-r--. 1 data_mine data_mine 274071552 Jan 12  2016 squashfs.img
-     4096 -rw-rw-r--. 1 data_mine data_mine        71 Aug  5 13:29 .gitignore
+     4096 -rw-rw-r--. 1 data_mine data_mine        71 Aug  5  2016 .gitignore
 
 amdrhel7/isolinux:
 total 90566656
@@ -615,11 +615,11 @@ total 90566656
   155648 -rw-rw-r--. 1 data_mine data_mine   153104 Jan 12  2016 vesamenu.c32
 45182976 -rw-rw-r--. 1 data_mine data_mine 45180680 Jan 12  2016 upgrade.img
     4096 -rw-rw-r--. 1 data_mine data_mine     2438 Jan 12  2016 TRANS.TBL
-   28672 -rw-rw-r--. 1 data_mine data_mine    25976 Apr 26 16:21 splash7.png
-   86016 -rw-rw-r--. 1 data_mine data_mine    85141 Apr 26 16:20 splash7-editable.xcf
+   28672 -rw-rw-r--. 1 data_mine data_mine    25976 Apr 26  2016 splash7.png
+   86016 -rw-rw-r--. 1 data_mine data_mine    85141 Apr 26  2016 splash7-editable.xcf
   180224 -rw-rw-r--. 1 data_mine data_mine   176500 Jan 12  2016 memtest
     4096 -rw-rw-r--. 1 data_mine data_mine     3166 Jan 12  2016 isolinux.cfg~
-    4096 -rw-rw-r--. 1 data_mine data_mine      919 Apr 28 12:30 isolinux.cfg
+    4096 -rw-rw-r--. 1 data_mine data_mine      919 Apr 28  2016 isolinux.cfg
    24576 -rw-rw-r--. 1 data_mine data_mine    24576 Jan 12  2016 isolinux.bin
 39727104 -rw-rw-r--. 1 data_mine data_mine 39725808 Jan 12  2016 initrd.img
     4096 -rw-rw-r--. 1 data_mine data_mine      321 Jan 12  2016 grub.conf
@@ -630,20 +630,20 @@ amdrhel7/images:
 total 6430720
    4096 -rw-rw-r--. 1 data_mine data_mine     223 Jan 12  2016 TRANS.TBL
       0 drw-rw-r--. 2 data_mine data_mine      71 Oct 20  2015 pxeboot
-   4096 -rw-rw-r--. 1 data_mine data_mine      71 Aug  5 13:29 .gitignore
+   4096 -rw-rw-r--. 1 data_mine data_mine      71 Aug  5  2016 .gitignore
 6422528 -rw-rw-r--. 1 data_mine data_mine 6420480 Jan 12  2016 efiboot.img
 
 amdrhel7/EFI:
 total 8192
-4096 -rw-rw-r--. 1 data_mine data_mine   71 Aug  5 13:29 .gitignore
+4096 -rw-rw-r--. 1 data_mine data_mine   71 Aug  5  2016 .gitignore
 4096 drwxrwxr-x. 3 data_mine data_mine 4096 Oct 31  2015 BOOT
 
 amdrhel7/amd:
 total 24576
 8192 -rw-rw-r--. 1 data_mine data_mine 6316 Oct 22  2015 amdrhel7min.cfg~
-8192 -rw-rw-r--. 1 data_mine data_mine 6390 Apr 28 13:14 1245amdrhel7min.cfg
-8192 -rw-rw-r--. 1 data_mine data_mine 6413 Apr 28 13:13 1242amdrhel7min.cfg
+8192 -rw-rw-r--. 1 data_mine data_mine 6390 Apr 28  2016 1245amdrhel7min.cfg
+8192 -rw-rw-r--. 1 data_mine data_mine 6413 Apr 28  2016 1242amdrhel7min.cfg
 
 amdrhel7/addons:
 total 4096
-4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5 13:29 .gitignore
+4096 -rw-rw-r--. 1 data_mine data_mine 71 Aug  5  2016 .gitignore
