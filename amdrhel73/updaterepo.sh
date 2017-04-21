@@ -3,12 +3,13 @@
 
 echo -e "\e[34mINFO:\e[39m Preparing to update repo data."
 
-mv disc/repodata/*-comps*.xml disc/repodata/comps.xml
-createrepo -g disc/repodata/comps.xml .
+cd disc
+mv repodata/*-comps*.xml repodata/comps.xml
+createrepo -g repodata/comps.xml .
 if [ $? -ne 0 ]; then
 	echo -e "\e[33mWARNING:\e[39m Repo data update failed."
 else
 	echo -e "\e[32mPASS:\e[39m Repo data updated successfully."
 fi
-
+cd ..
 
