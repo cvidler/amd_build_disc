@@ -11,7 +11,7 @@
 - AMD 12.4.2 (build 24)
 - Extra dependencies added since 12.4 GA.
 - New Logos
-- Supports 12.4.0-7 classic or high speed AMD.
+- Supports 12.4.0-10 or high speed AMD. **New** Tested with 10.4.10 release Sep 2016.
 
 
 
@@ -174,6 +174,10 @@ Note, to install create your VM with the following options:
 
 These servers run an UEFI style BIOS by default, the build will not work unless the BIOS style is changed back to the ‘Legacy BIOS’ style. This can be done through the BIOS/Platform configuration.
 
+
+**UEFI Support**
+
+UEFI support is available for testing in the RHEL7.3 disc build.
 	 
  
 ### Unsuccessful Platforms

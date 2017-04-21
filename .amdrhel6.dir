@@ -639,11 +639,12 @@ total 4096
    0 drwx------. 2 data_mine data_mine 79 Nov 24  2015 BOOT
 
 amdrhel6/amd:
-total 133406720
+total 133410816
    888832 -rw-rw-r--. 1 data_mine data_mine    886548 Nov 24  2015 xerces-c-3.0.1-20.el6.x86_64.rpm
 105230336 -rw-rw-r--. 1 data_mine data_mine 105230168 Nov 24  2015 upgrade-amd-amdos6-x86_64-ndw-12-03-00-0791-b001.bin
     77824 -rw-rw-r--. 1 data_mine data_mine     74140 Nov 24  2015 perl-XML-Simple-2.18-6.el6.noarch.rpm
  27168768 -rw-rw-r--. 1 data_mine data_mine  27168280 Nov 24  2015 java-1.7.0-openjdk-1.7.0.71-2.5.3.1.el6.x86_64.rpm
+     4096 -rw-rw-r--. 1 data_mine data_mine        24 Apr 21 12:47 .gitignore
     12288 -rw-rw-r--. 1 data_mine data_mine      9295 Nov 24  2015 amdrhel6-endace.cfg
     12288 -rw-rw-r--. 1 data_mine data_mine      9131 Nov 24  2015 amdrhel6.cfg~
     12288 -rw-rw-r--. 1 data_mine data_mine      9207 Nov 24  2015 amdrhel6.cfg
