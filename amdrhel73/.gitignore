@@ -1,17 +1,3 @@
 # excluding RHEL components
-addons/*
-EFI/*
-images/*
-isolinux/*
-LiveOS/*
-Packages/*
-release-notes/*
-repodata/*
-EULA
-GPL
-media.repo
-RPM-GPG-KEY-*
-TRANS.TBL
-.discinfo
-.treeinfo
+disc/*
 

@@ -6,7 +6,7 @@ echo -e "\e[34mINFO:\e[39m Preparing to test repo dependencies."
 TEMPDIR=`mktemp -d`
 echo -e "\e[17m"
 rpm --initdb --dbpath $TEMPDIR 
-rpm --test --nosignature --dbpath $TEMPDIR -Uvh Packages/*.rpm
+rpm --test --nosignature --dbpath $TEMPDIR -Uvh disc/Packages/*.rpm
 ERROR=$?
 echo -e "\e[39m"
 if [ $ERROR -ne 0 ]; then
