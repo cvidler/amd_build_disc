@@ -5,6 +5,7 @@
 AMDVER=amd124
 RHELVER=rhel73
 DISCTYPE=mini
+VOLLABEL="RHEL-7.3 Server.x86_64"
 
 OUTISO=`mktemp`
 #echo "OUTISO: [$OUTISO]"
@@ -18,9 +19,8 @@ if [ $REV == "" ]; then REV=1; fi
 
 
 cd disc
-mkisofs -U -A "MyLinux_1 x86_64 Disc 1" -V "RHEL-7.3 Server.x86_64" \
-	    -volset "MyLinux_1 x86_64 Disc 1" -J -joliet-long -r -quiet -T -x ./lost+found -m TRANS.TBL \
-	    -o $OUTISO \
+mkisofs -U -A "$VOLLABEL" -V "$VOLLABEL" -volset "$VOLLABEL" -J -joliet-long \
+		-r -quiet -T -x ./lost+found -m TRANS.TBL -o $OUTISO \
 	    -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
 	    -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot .
 ERROR=$?
