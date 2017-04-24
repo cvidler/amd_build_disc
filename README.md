@@ -3,7 +3,24 @@
 
 ## Current Release Downloads
 
-### RHEL 7 x86_64 DC RUM 12.4.x
+### RHEL 7.3 x86_64 DC RUM 12.4.x
+
+**AMD 12.4 Build Disc – Build mini3**
+
+- RHEL 7.3 (stripped to bare minimum for AMD)
+- AMD 12.4.12 (build 40)
+- Extra dependencies added since 12.4 GA.
+- Supports 12.4.0-12 classic or high speed AMD.
+- Support for UEFI servers, installing disks >2TB
+
+
+**Download:** https://www.dropbox.com/s/83yad1xlund0xj7/amd124_rhel73_mini3_d19918228fcbf074a4193dbf86465d0b.iso?dl=0 
+
+**Size:** approx. 944MB
+
+**MD5SUM:** d19918228fcbf074a4193dbf86465d0b
+
+### RHEL 7.2 x86_64 DC RUM 12.4.x
 
 **AMD 12.4 Build Disc – Build mini6**
 
@@ -11,8 +28,7 @@
 - AMD 12.4.2 (build 24)
 - Extra dependencies added since 12.4 GA.
 - New Logos
-- Supports 12.4.0-10 or high speed AMD. **New** Tested with 10.4.10 release Sep 2016.
-
+- Supports 12.4.0-12 classic or high speed AMD.
 
 
 **Download:** https://www.dropbox.com/s/nlqlz6inp6gxw1k/amd124_rhel72_autoinstaller_mini6_8d696d35dc6a3344fd91ae50bfa6a92d.iso?dl=0 
@@ -149,6 +165,7 @@ RHEL6.6 AMD12.3 Mini1-5
 
  
 ### Successful Platforms
+- Cisco UCS C240 M3S
 - Dell 2950
 - Dell R720
 - Dell R730
@@ -163,10 +180,11 @@ RHEL6.6 AMD12.3 Mini1-5
 **VMWare**
 
 Note, to install create your VM with the following options:
--	Guest Operating System, choose Red Hat Enterprise Linux 6 64-bit or 7 64-bit if available (VMWare Workstation 9 doesn’t have 7 as an option 6 works fine.).
+-	Guest Operating System, choose Red Hat Enterprise Linux 6 64-bit or 7 64-bit if available (VMWare Workstation 9 doesn’t have 7 as an option, 6 works fine.).
 -	Disk Space: at least 20GB, thin provisioned is fine, but the installer needs to see sufficient space to install.
--	E1000 virtual NICs
-	Then when running rtminst to configure monitoring ports, be sure to change the driver type to Native, Customised won’t work with the virtual NICs.	
+-	E1000 virtual NICs (at least two, one for communicaitons, one for capture)
+
+Then when running rtminst to configure monitoring ports, be sure to change the driver type to Native, Customised won’t work with the virtual NICs.	
 
 
 
