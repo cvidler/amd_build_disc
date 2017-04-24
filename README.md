@@ -3,7 +3,24 @@
 
 ## Current Release Downloads
 
-### RHEL 7 x86_64 DC RUM 12.4.x
+### RHEL 7.3 x86_64 DC RUM 12.4.x
+
+**AMD 12.4 Build Disc – Build mini3**
+
+- RHEL 7.3 (stripped to bare minimum for AMD)
+- AMD 12.4.12 (build 40)
+- Extra dependencies added since 12.4 GA.
+- Supports 12.4.0-12 classic or high speed AMD.
+- Support for UEFI servers, installing disks >2TB
+
+
+**Download:** https://www.dropbox.com/s/83yad1xlund0xj7/amd124_rhel73_mini3_d19918228fcbf074a4193dbf86465d0b.iso?dl=0 
+
+**Size:** approx. 944MB
+
+**MD5SUM:** d19918228fcbf074a4193dbf86465d0b
+
+### RHEL 7.2 x86_64 DC RUM 12.4.x
 
 **AMD 12.4 Build Disc – Build mini6**
 
@@ -12,7 +29,6 @@
 - Extra dependencies added since 12.4 GA.
 - New Logos
 - Supports 12.4.0-12 classic or high speed AMD.
-
 
 
 **Download:** https://www.dropbox.com/s/nlqlz6inp6gxw1k/amd124_rhel72_autoinstaller_mini6_8d696d35dc6a3344fd91ae50bfa6a92d.iso?dl=0 
@@ -176,6 +192,10 @@ Then when running rtminst to configure monitoring ports, be sure to change the d
 
 These servers run an UEFI style BIOS by default, the build will not work unless the BIOS style is changed back to the ‘Legacy BIOS’ style. This can be done through the BIOS/Platform configuration.
 
+
+**UEFI Support**
+
+UEFI support is available for testing in the RHEL7.3 disc build.
 	 
  
 ### Unsuccessful Platforms

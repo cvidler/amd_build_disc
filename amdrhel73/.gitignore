@@ -1,0 +1,3 @@
+# excluding RHEL components
+disc/*
+
