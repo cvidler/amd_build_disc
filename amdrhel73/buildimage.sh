@@ -18,17 +18,21 @@ if [ $REV == "" ]; then REV=1; fi
 #echo "REV: [$REV]"
 
 # build EFI image
+echo "Building new efiboot.img - sudo required, entre password when prompted"
 rm efiboot-new.img
 dd if=/dev/zero bs=1M count=10 of=efiboot-new.img
 mkfs.fat -n "ANACONDA" efiboot-new.img
-mkdir newimage/EFI -p
+mkdir newimage
 sudo mount -o loop efiboot-new.img newimage
-cp -r disc/EFI/* newimage/EFI
+sudo mkdir newimage/EFI 
+sudo cp -r disc/EFI/* newimage/EFI
 sudo umount newimage
 mv efiboot-new.img disc/images/efiboot.img
+rm -rf newimage
 
 read
 
+echo "Building ISO image, ignore warnings"
 # build base ISO image
 cd disc
 mkisofs -U -input-charset utf-8 -volset "$VOLLABEL" -J -joliet-long -r \
@@ -45,6 +49,7 @@ if [ ! $ERROR -eq 0 ]; then
 fi
 
 # make is USB bootable
+echo "Adding USB boot support"
 isohybrid --uefi $OUTISO
 ERROR=$?
 if [ ! $ERROR -eq 0 ]; then
@@ -54,6 +59,7 @@ if [ ! $ERROR -eq 0 ]; then
 fi
 
 # implant internal checksum
+echo "Implanting MD% checksums"
 implantisomd5 --supported-iso  $OUTISO
 ERROR=$?
 if [ ! $ERROR -eq 0 ]; then
@@ -63,7 +69,7 @@ if [ ! $ERROR -eq 0 ]; then
 fi
 
 
-
+echo "Creating ISO checksum"
 HASH=`md5sum $OUTISO`
 HASH=${HASH:0:32}
 #echo "HASH: [$HASH]"
@@ -76,10 +82,13 @@ if [ ! $ERROR -eq 0 ]; then
 	exit 1
 fi
 
+# git commit changes
+echo "Updating GIT"
 git commit --all --message "buildimage.sh run built image $NEWISO"
 
 
 REV=$((REV + 1))
 echo -E $REV > revision.txt
+echo
 echo "Created: $NEWISO"
 
