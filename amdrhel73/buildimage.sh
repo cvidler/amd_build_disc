@@ -17,10 +17,22 @@ fi
 if [ $REV == "" ]; then REV=1; fi
 #echo "REV: [$REV]"
 
+# build EFI image
+rm efiboot-new.img
+dd if=/dev/zero bs=1M count=10 of=efiboot-new.img
+mkfs.fat -n "ANACONDA" efiboot-new.img
+mkdir newimage/EFI -p
+sudo mount -o loop efiboot-new.img newimage
+cp -r disc/EFI/* newimage/EFI
+sudo umount newimage
+mv efiboot-new.img disc/images/efiboot.img
 
+read
+
+# build base ISO image
 cd disc
-mkisofs -U -A "$VOLLABEL" -V "$VOLLABEL" -volset "$VOLLABEL" -J -joliet-long \
-		-r -quiet -T -x ./lost+found -m TRANS.TBL -o $OUTISO \
+mkisofs -U -input-charset utf-8 -volset "$VOLLABEL" -J -joliet-long -r \
+		-quiet -T -x ./lost+found -m TRANS.TBL -o $OUTISO \
 	    -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
 	    -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot .
 ERROR=$?
@@ -31,6 +43,26 @@ if [ ! $ERROR -eq 0 ]; then
 	echo "mkisofs failed!"
 	exit 1
 fi
+
+# make is USB bootable
+isohybrid --uefi $OUTISO
+ERROR=$?
+if [ ! $ERROR -eq 0 ]; then
+	rm -f $OUTISO
+	echo "isohybrid failed!"
+	exit 1
+fi
+
+# implant internal checksum
+implantisomd5 --supported-iso  $OUTISO
+ERROR=$?
+if [ ! $ERROR -eq 0 ]; then
+	rm -f $OUTISO
+	echo "implantisomd5 failed!"
+	exit 1
+fi
+
+
 
 HASH=`md5sum $OUTISO`
 HASH=${HASH:0:32}
@@ -43,6 +75,10 @@ if [ ! $ERROR -eq 0 ]; then
 	echo "Could not rename ISO, ISO exists as: $OUTISO"
 	exit 1
 fi
+
+git commit --all --message "buildimage.sh run built image $NEWISO"
+
+
 REV=$((REV + 1))
 echo -E $REV > revision.txt
 echo "Created: $NEWISO"
