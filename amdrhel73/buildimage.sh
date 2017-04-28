@@ -35,8 +35,6 @@ LABELREPLACE="mount LABEL=\"${VOLLABEL}\" \$SRC"
 cat "$EFI1" | sed "s/${LABELFIND}/${LABELREPLACE}/" > "$EFI2"
 cat "$BIOS1" | sed "s/${LABELFIND}/${LABELREPLACE}/" > "$BIOS2"
 
-read
-
 mv -f "$EFI2" "$EFI"
 mv -f "$BIOS2" "$BIOS"
 rm -f "$EFI1" "$EFI2" "$BIOS1" "$BIOS2"
