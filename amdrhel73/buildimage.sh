@@ -2,9 +2,9 @@
 # Build ISO image from source 'disc' folder and add boot code for BIOS and UEFI.
 # Chris Vidler - Dynatrace DCRUM SME
 
-AMDVER=amd124
-RHELVER=rhel73
-DISCTYPE=mini
+AMDVER="amd124"
+RHELVER="rhel73"
+DISCTYPE="mini"
 VOLLABEL="RHEL-7.3 Server.x86_64"
 
 OUTISO=`mktemp`
@@ -16,6 +16,31 @@ if [ -r revision.txt ]; then
 fi
 if [ $REV == "" ]; then REV=1; fi
 #echo "REV: [$REV]"
+
+#implant version and disc label into postinstall
+VER="${AMDVER}_${RHELVER}_${DISCTYPE}${REV}"
+echo "[$VER]"
+EFI="disc/amd/efiamdrhel7min.cfg"
+BIOS="disc/amd/biosamdrhel7min.cfg"
+EFI1=`mktemp`
+BIOS1=`mktemp`
+VERFIND="log \"AMD built with Dynatrace RHEL AMD Automated Installer.*"
+VERREPLACE="log \"AMD built with Dynatrace RHEL AMD Automated Installer ${VER}\""
+cat "$EFI" | sed "s/${VERFIND}/${VERREPLACE}/" > "$EFI1"
+cat "$BIOS" | sed "s/${VERFIND}/${VERREPLACE}/" > "$BIOS1"
+EFI2=`mktemp`
+BIOS2=`mktemp`
+LABELFIND="mount LABEL=\".*"
+LABELREPLACE="mount LABEL=\"${VOLLABEL}\" \$SRC"
+cat "$EFI1" | sed "s/${LABELFIND}/${LABELREPLACE}/" > "$EFI2"
+cat "$BIOS1" | sed "s/${LABELFIND}/${LABELREPLACE}/" > "$BIOS2"
+
+read
+
+mv -f "$EFI2" "$EFI"
+mv -f "$BIOS2" "$BIOS"
+rm -f "$EFI1" "$EFI2" "$BIOS1" "$BIOS2"
+
 
 # build EFI image
 echo "1. Building new efiboot.img - sudo required, enter password when prompted"
@@ -30,8 +55,6 @@ sudo cp -r disc/EFI/* newimage/EFI
 sudo umount newimage
 mv efiboot-new.img disc/images/efiboot.img
 rm -rf newimage
-
-read
 
 echo "2. Building ISO image, ignore warnings"
 # build base ISO image
