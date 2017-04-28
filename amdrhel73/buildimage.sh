@@ -24,20 +24,14 @@ EFI="disc/amd/efiamdrhel7min.cfg"
 BIOS="disc/amd/biosamdrhel7min.cfg"
 EFI1=`mktemp`
 BIOS1=`mktemp`
-VERFIND="log \"AMD built with Dynatrace RHEL AMD Automated Installer.*"
-VERREPLACE="log \"AMD built with Dynatrace RHEL AMD Automated Installer ${VER}\""
+VERFIND="echo \"AMD built with Dynatrace RHEL AMD Automated Installer.*"
+VERREPLACE="echo \"AMD built with Dynatrace RHEL AMD Automated Installer ${VER}\""
 cat "$EFI" | sed "s/${VERFIND}/${VERREPLACE}/" > "$EFI1"
 cat "$BIOS" | sed "s/${VERFIND}/${VERREPLACE}/" > "$BIOS1"
-EFI2=`mktemp`
-BIOS2=`mktemp`
-LABELFIND="mount LABEL=\".*"
-LABELREPLACE="mount LABEL=\"${VOLLABEL}\" \$SRC"
-cat "$EFI1" | sed "s/${LABELFIND}/${LABELREPLACE}/" > "$EFI2"
-cat "$BIOS1" | sed "s/${LABELFIND}/${LABELREPLACE}/" > "$BIOS2"
 
-mv -f "$EFI2" "$EFI"
-mv -f "$BIOS2" "$BIOS"
-rm -f "$EFI1" "$EFI2" "$BIOS1" "$BIOS2"
+mv -f "$EFI1" "$EFI"
+mv -f "$BIOS1" "$BIOS"
+rm -f "$EFI1" "$BIOS1"
 
 
 # build EFI image
