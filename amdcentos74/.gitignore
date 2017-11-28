@@ -1,0 +1,3 @@
+# excluding CentOS components
+disc/*
+
