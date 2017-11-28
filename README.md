@@ -36,6 +36,7 @@ Note: This build was intended for POC (temporary) installations only, use for pr
 - Dell 2950
 - Dell R720
 - Dell R730
+- HPE DL360 Gen9
 - HP DL380p Gen8
 - HP DL380 Gen9
 - VMWare ESXi 5.1
