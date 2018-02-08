@@ -8,13 +8,14 @@ echo -e "\e[17m"
 rpm --initdb --dbpath $TEMPDIR 
 rpm --test --nosignature --dbpath $TEMPDIR -Uvh disc/Packages/*.rpm
 ERROR=$?
+#echo $?
+rm -rf $TEMPDIR
 echo -e "\e[39m"
 if [ $ERROR -ne 0 ]; then
 	echo -e "\e[33mWARNING:\e[39m Errors found."
+	exit 1
 else
 	echo -e "\e[32mPASS:\e[39m Everything OK."
 fi
-
-#echo $?
-rm -rf $TEMPDIR
+exit 0
 
