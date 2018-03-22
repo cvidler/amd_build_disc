@@ -5,7 +5,7 @@ PKGDIR="disc/Packages"
 
 
 # sanity test
-if [ ! -w $PKGDIR ]; then "No write permissions to $PKGDIR, cannot continue."; exit 1; fi
+if [ ! -w $PKGDIR ]; then echo -e "\e[31mERROR:\e[39m No write permissions to $PKGDIR, cannot continue."; exit 1; fi
 
 
 # build package list
