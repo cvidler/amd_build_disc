@@ -2,8 +2,8 @@
 # Build ISO image from source 'disc' folder and add boot code for BIOS and UEFI.
 # Chris Vidler - Dynatrace DCRUM SME
 
-AMDVER="amd17"
-RHELVER="centos74"
+AMDVER="probe18"
+RHELVER="centos75"
 DISCTYPE="mini"
 VOLLABEL="CentOS 7 x86_64"
 
