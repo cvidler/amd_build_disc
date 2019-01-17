@@ -3,7 +3,7 @@
 # Chris Vidler - Dynatrace DCRUM SME
 
 AMDVER="probe18"
-RHELVER="centos75"
+RHELVER="centos76"
 DISCTYPE="mini"
 VOLLABEL="CentOS 7 x86_64"
 
