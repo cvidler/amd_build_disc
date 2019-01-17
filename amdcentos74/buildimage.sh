@@ -36,7 +36,7 @@ rm -f "$EFI1" "$BIOS1"
 
 # build EFI image
 echo "1. Building new efiboot.img - sudo required, enter password when prompted"
-rm efiboot-new.img > /dev/null
+if [ -e efiboot-new.img ]; then rm efiboot-new.img > /dev/null ; fi
 dd if=/dev/zero bs=1M count=10 of=efiboot-new.img
 mkfs.fat -n "ANACONDA" efiboot-new.img
 rm -rf newimage > /dev/null
