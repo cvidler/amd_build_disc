@@ -49,7 +49,7 @@ Note: This build was intended for POC (temporary) installations only, use for pr
 
 Note, to install create your VM with the following options:
 -	Guest Operating System, choose Red Hat Enterprise Linux 6 64-bit or 7 64-bit if available (VMWare Workstation 9 doesn’t have 7 as an option, 6 works fine.).
--	Disk Space: at least 200GB, thin provisioned is fine, but the installer needs to see sufficient space to install.
+-	Disk Space: at least 30GB, thin provisioned is fine, but the installer needs to see sufficient space to install.
 -	E1000 virtual NICs (at least two, one for communicaitons, one for capture)
 
 Then when running rtminst to configure monitoring ports, be sure to change the driver type to Native, Customised won’t work with the virtual NICs.	
