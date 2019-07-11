@@ -177,10 +177,11 @@ fi
 
 # git commit changes
 techo "\e[34mINFO:\e[39m 6. Updating GIT"
-git commit --all --message "buildimage.sh run built image $NEWISO"
+OUTPUT=$(git commit --all --message "buildimage.sh run built image $NEWISO")
 ERROR=$?
 if [ ! $ERROR -eq 0 ]; then
 	techo "\e[33m***WARNING:\e[0m Could not update git"
+	techo "$OUTPUT"
 fi
 
 
