@@ -2,10 +2,44 @@
 #Use yum to update all packages on the build disc
 
 PKGDIR="disc/Packages"
+DEBUG=0
+
+function debugecho {
+	dbglevel=${2:-1}
+	if [ $DEBUG -ge $dbglevel ]; then techo "*** DEBUG[$dbglevel]: $1 \e[39m"; fi
+}
+
+function techo {
+	echo -e "[`date -u "+%Y-%m-%d %H:%M:%S"`]: $1" 
+}
+
+function quit {
+	#cleanup temp dirs and exit passing exit code
+	if [ -d "${TMPDIR}" ]; then rm -rf "${TMPDIR}"; fi
+	if [ -d "${TMPROOT}" ]; then rm -rf "${ROOTDIR}"; fi
+	exit $1
+}
+
+# command line arguments
+while getopts ":d" OPT; do
+	case $OPT in
+		d)
+			DEBUG=$((DEBUG + 1))
+			;;
+		\?)
+			OPTS=0 #show help
+			techo "\e[31m***FATAL:\e[0m Invalid argument -$OPTARG."
+			;;
+		:)
+			OPTS=0 #show help
+			techo "\e[31m***FATAL:\e[0m argument -$OPTARG requires parameter."
+			;;
+	esac
+done
 
 
 # sanity test
-if [ ! -w $PKGDIR ]; then echo -e "\e[31mERROR:\e[39m No write permissions to $PKGDIR, cannot continue."; exit 1; fi
+if [ ! -w $PKGDIR ]; then techo "\e[31mERROR:\e[39m No write permissions to $PKGDIR, cannot continue."; quit 1; fi
 
 
 # build package list
@@ -15,84 +49,89 @@ if [ ! -w $PKGDIR ]; then echo -e "\e[31mERROR:\e[39m No write permissions to $P
 REGEX="^([a-zA-Z0-9\_\-\+\.]+?(?:-[0-9\.]+-api|-1\.8\.0-openjdk[-a-z]*?)?)(?=-(?:[0-9][a-z0-9\.-]+?)(?:\.el7[_[0-9\.]*)(?:\.centos)?(?:\.[0-9])?(?:\.noarch|\.x86_64)\.rpm$)"
 PKGLISTNL=$(cd "$PKGDIR/" && ls -1 | grep -Po "$REGEX")
 PKGLIST=$(echo -e "${PKGLISTNL}" | tr '\n' ' ')
-#echo -e "$PKGLIST"
+PKGCOUNT=$(echo -e "${PKGLISTNL}" | wc -l)
+debugecho "PKGLIST: [[$PKGLIST]]" 3
+debugecho "PKGCOUNT: [[$PKGCOUNT]]" 2
 
 
 # Get yum to download all packages from the built package list
 TMPDIR=$(mktemp -d)
 TMPROOT=$(mktemp -d)
-echo -e "\e[34mINFO:\e[39m Downloading packages to: ${TMPDIR}\nWill take a few minutes..."
+techo "\e[34mINFO:\e[39m Check for Updates for ${PKGCOUNT} packages and Downloading to: ${TMPDIR}"
+techo "Will take a few minutes..."
 #YUMOUT=$(sudo yum update --disableplugin=deltarpm --downloadonly --downloaddir=${TMPDIR} ${PKGLIST})
 YUMOUT=$(yum clean all && yumdownloader --archlist=x86_64 -x "*i686" --destdir ${TMPDIR} ${PKGLIST})
 RC=$?
-echo -e "\e[32mPASS:\e[39m Download Complete."
-if [ $RC -ne 0 ]; then echo -e "\e[33mWARNING:\e[39m Error indicated in yum output:\n ${YUMOUT}"; fi
+debugecho "RC: [[$RC]] YUMOUT: [[$YUMOUT]]" 3
+techo "\e[32mPASS:\e[39m Download Complete."
+if [ $RC -ne 0 ]; then techo "\e[33mWARNING:\e[39m Error indicated in yum output:\n ${YUMOUT}"; quit $RC; fi
 
 
 # Copy new rpms to the build disc folder
 # iterate list of packages, find matching (old and new) versions and remove the old, replacing with new version.
+PKGI=0
 while read -r PKG; do
+	PKGI=$((PKGI + 1))
 	OLDFILE=""
 	NEWFILE=""
 	OLDFILE=$(ls $PKGDIR/$PKG-* 2>&1 | head -n 1)
 	NEWFILE=$(ls $TMPDIR/$PKG-* 2>&1 | head -n 1)
-	#echo -e "PKG:[$PKG] - OLDFILE:[$OLDFILE] - NEWFILE:[$NEWFILE]"
+	debugecho "PKGI: [[$PKGI]] PKG: [[$PKG]] - OLDFILE: [[$OLDFILE]] - NEWFILE: [[$NEWFILE]]" 3
 
 	if [ ! -f "$OLDFILE" ]; then OLDFILE=""; fi
 	if [ ! -f "$NEWFILE" ]; then NEWFILE=""; fi
-	#echo -e "PKG:[$PKG] - OLDFILE:[$OLDFILE] - NEWFILE:[$NEWFILE]"
+	debugecho "PKGI: [[$PKGI]] PKG: [[$PKG]] - OLDFILE: [[$OLDFILE]] - NEWFILE: [[$NEWFILE]]" 3
 
-	if [ "$OLDFILE" == "" ] && [ "$NEWFILE" == "" ]; then echo "shit's broke!"; exit 255; fi
+	if [ "$OLDFILE" == "" ] && [ "$NEWFILE" == "" ]; then techo "PKG: [[$PKG]] shit's broke!"; quit 255; fi
 
 
 	# check for updated package
 	if [ "$NEWFILE" == "" ]; then
 		# new package file doesn't exist
-		echo -e "\e[34mINFO:\e[39m $(basename $OLDFILE) has no update!"
+		debugecho "\e[34mINFO:\e[39m #$PKGI/$PKGCOUNT $(basename $OLDFILE) has no update!" 2
 		continue;
 	fi
 
 	if [ "$OLDFILE" == "" ] && [ -r "$NEWFILE" ]; then
 		# old file doesn't exist - new package
-		echo -e "\e[34mINFO:\e[39m New package $(basename $NEWFILE)"
+		debugecho "\e[34mINFO:\e[39m #$PKGI/$PKGCOUNT New package $(basename $NEWFILE)" 1
 		cp $NEWFILE $PKGDIR
-		if [ $? -ne 0 ]; then echo -e "\e[33mWARNING:\e[39m Couldn't copy new package $NEWFILE to $PKGDIR!"; exit 1; fi
+		if [ $? -ne 0 ]; then techo -e "\e[33mWARNING:\e[39m Couldn't copy new package $NEWFILE to $PKGDIR!"; quit 1; fi
 		continue;
 	fi
 
 	# check for same version
 	if [ "$(basename $OLDFILE)" == "$(basename $NEWFILE)" ]; then
 		# package files match, skip, nothing to do
+		debugecho "\e[34mINFO:\e[39m #$PKGI/$PKGCOUNT $(basename $OLDFILE) and $(basename $NEWFILE) are identical - no update!" 3
 		continue;
 	fi
 
 	# copy update package and remove the old package.
-	echo -e "\e[34mINFO:\e[39m Updating $(basename $OLDFILE) to $(basename $NEWFILE)"
+	techo "\e[34mINFO:\e[39m #$PKGI/$PKGCOUNT Updating $(basename $OLDFILE) to $(basename $NEWFILE)"
 	cp "$NEWFILE" "$PKGDIR" && rm -f "$OLDFILE"
-	if [ $? -ne 0 ]; then echo -e "\e[33mWARNING:\e[39m Couldn't update package $NEWFILE to $PKGDIR and remove $OLDFILE"; exit 1; fi	
+	if [ $? -ne 0 ]; then techo "\e[33mWARNING:\e[39m #$PKGI/$PKGCOUNT Couldn't update package $NEWFILE to $PKGDIR and remove $OLDFILE"; quit 1; fi	
 
 done < <(echo -e "$PKGLISTNL")
-
-# cleanup
-rm -rf ${TMPDIR} ${TMPROOT}
-
 
 
 # after, use existing scripts to update repo info.
 ./testrepo.sh
 RC=$?
 if [ $RC -ne 0 ]; then
-	echo -e "\e[33mWARNING:\e[39m Repository test failed, need manual intevention to fix dependencies."
-	exit 1
+	techo "\e[33mWARNING:\e[39m Repository test failed, need manual intevention to fix dependencies."
+	quit $RC
 fi
 
 ./updaterepo.sh
 RC=$?
 if [ $RC -ne 0 ]; then
-	echo -e "\e[33mWARNING:\e[39m Repository update failed, need manual intevention."
-	exit 1
+	techo "\e[33mWARNING:\e[39m Repository update failed, need manual intevention."
+	quit $RC
 fi
 
-echo -e "\e[32mPASS:\e[39m Package update process complete."
+techo "\e[32mPASS:\e[39m Package update process complete."
 
 # done
+quit 0
+
