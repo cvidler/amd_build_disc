@@ -131,6 +131,13 @@ techo "\e[34m***INFO:\e[0m Found installer for ${INST_MAJ}.${INST_MIN} SP${INST_
 CMD="${INSTALLER} ${CMD_OPTS}"
 debugecho "CMD: [$CMD]" 1
 
+# check executability
+if [ ! -x $INSTALLER ]; then 
+	chmod +x $INSTALLER
+	RC=$?
+	if [ $RC -ne 0 ]; then techo "\e[33m***WARNING:\e[0m $INSTALLER not executable and couldn't fix that." ; quit $RC ; fi
+fi
+
 # run installer
 if [ $DEBUG -eq 0 ]; then 
 	$CMD
